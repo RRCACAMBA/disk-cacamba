@@ -1,10 +1,19 @@
-# Disk Caçamba — Landing Page para Ads
+# Disk Caçamba Premium v20
+
+Landing page para Google Ads, responsiva para celular e computador.
 
 ## Configuração
-Edite apenas `config.js` para trocar WhatsApp, checkout ou endereço.
+Edite apenas `config.js` para alterar WhatsApp, telefone, checkout, endereço e mensagens.
 
 ## Publicação
-Apague arquivos antigos do repositório e envie somente os arquivos deste projeto. O Railway fará o deploy automaticamente.
+Envie somente os arquivos desta pasta ao repositório. O `server.js` desativa cache para HTML/CSS/JS, evitando que versões antigas permaneçam no celular.
 
-## Teste sem cache
-Abra o site com `?v=10` ao final da URL após o deploy.
+## Rastreamento
+Tag do Google Ads instalada: `AW-18362672744`.
+
+Os cliques geram eventos no `dataLayer`:
+- `whatsapp_click`
+- `checkout_click`
+- `checkout_size_click`
+- `whatsapp_size_click`
+- `lead_form_submit`
