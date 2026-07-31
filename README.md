@@ -1,8 +1,8 @@
-# Disk Caçamba
-Landing page para anúncios em São Paulo.
+# Disk Caçamba — versão 6
+Projeto responsivo para computador e celular.
 
-## Alterar WhatsApp ou checkout
-Edite somente o arquivo `config.js`.
+## Configuração
+Altere WhatsApp, checkout e endereço somente em `config.js`.
 
 ## Publicação
-Envie todos os arquivos para a raiz do repositório. O Railway fará novo deploy automaticamente.
+Envie todos os arquivos para a raiz do repositório. Não misture com versões antigas. O Railway executa `npm start`.
