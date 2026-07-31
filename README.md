@@ -1,16 +1,10 @@
-# Disk Caçamba — projeto limpo
+# Disk Caçamba — Landing Page para Ads
 
-Arquivos essenciais:
-- index.html
-- config.js
-- server.js
-- package.json
-- hero.webp
-- cacamba.webp
-- caminhao.webp
-- privacidade.html
-- termos.html
+## Configuração
+Edite apenas `config.js` para trocar WhatsApp, checkout ou endereço.
 
-Antes de enviar ao GitHub, apague todos os arquivos antigos do repositório e envie somente estes arquivos.
+## Publicação
+Apague arquivos antigos do repositório e envie somente os arquivos deste projeto. O Railway fará o deploy automaticamente.
 
-Para trocar WhatsApp, checkout ou endereço, edite apenas `config.js`.
+## Teste sem cache
+Abra o site com `?v=10` ao final da URL após o deploy.
