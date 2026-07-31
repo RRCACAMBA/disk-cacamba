@@ -1,23 +1,8 @@
-# Disk Caçamba — Landing Page para Ads
+# Disk Caçamba
+Landing page para anúncios em São Paulo.
 
-Landing page responsiva focada em Google Ads para São Paulo.
+## Alterar WhatsApp ou checkout
+Edite somente o arquivo `config.js`.
 
-## Configuração
-Edite `config.js` para alterar WhatsApp ou checkout.
-
-## Publicação no Railway
-O projeto usa Node/Express. O Railway executa automaticamente `npm start`.
-
-## Rastreamento
-A página preserva UTM, `gclid`, `gbraid` e `wbraid` no navegador e encaminha esses parâmetros para o checkout. Eventos enviados ao `dataLayer`:
-- `whatsapp_click`
-- `checkout_click`
-- `checkout_size_click`
-
-## Arquivos principais
-- `index.html`
-- `styles.css`
-- `script.js`
-- `config.js`
-- `server.js`
-- `hero-disk-cacamba.webp`, `cacambas-modelos.webp` e `caminhao-disk-cacamba.webp` na raiz do projeto
+## Publicação
+Envie todos os arquivos para a raiz do repositório. O Railway fará novo deploy automaticamente.
