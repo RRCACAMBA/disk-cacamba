@@ -1,223 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Aluguel de caçamba em São Paulo com atendimento rápido. Peça orçamento pelo WhatsApp ou reserve online." />
-  <meta name="theme-color" content="#151515" />
-  <title>Disk Caçamba | Aluguel de Caçambas em São Paulo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Google Tag Manager: substitua GTM-XXXXXXX pelo seu ID -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'page_view_disk_cacamba' });
-  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aluguel de Caçamba em São Paulo | Disk Caçamba</title>
+  <meta name="description" content="Aluguel de caçambas em São Paulo com atendimento rápido. Peça orçamento no WhatsApp ou reserve e pague online.">
+  <meta name="theme-color" content="#101318">
+  <meta property="og:title" content="Disk Caçamba — Aluguel de Caçamba em São Paulo">
+  <meta property="og:description" content="Atendimento rápido, reserva online e retirada programada.">
+  <meta property="og:type" content="website">
+  <link rel="preload" href="hero-disk-cacamba.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="styles.css">
+  <script>window.dataLayer=window.dataLayer||[];</script>
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="#inicio" aria-label="Disk Caçamba - início">
-      <span class="brand-mark">DC</span>
-      <span><strong>DISK</strong> CAÇAMBA</span>
-    </a>
-    <nav class="desktop-nav" aria-label="Navegação principal">
-      <a href="#regioes">Regiões</a>
-      <a href="#tamanhos">Tamanhos</a>
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#duvidas">Dúvidas</a>
-    </nav>
-    <a class="btn btn-whatsapp btn-small js-whatsapp" href="#" data-message="Olá! Quero alugar uma caçamba em São Paulo.">Pedir caçamba</a>
-  </header>
+<header class="topbar" id="inicio">
+  <a class="brand" href="#inicio" aria-label="Disk Caçamba">
+    <span class="brand-mark">▰</span><span><b>DISK</b><strong>CAÇAMBA</strong></span>
+  </a>
+  <nav aria-label="Navegação principal">
+    <a href="#cacambas">Caçambas</a><a href="#regioes">Regiões</a><a href="#como-funciona">Como funciona</a><a href="#faq">Dúvidas</a>
+  </nav>
+  <a class="btn btn-whatsapp btn-small track-whatsapp" href="#" data-message="Olá! Vim pelo site da Disk Caçamba e quero um orçamento.">WhatsApp</a>
+</header>
 
-  <main>
-    <section class="hero" id="inicio">
-      <div class="hero-content container">
-        <div class="hero-copy">
-          <div class="eyebrow"><span class="live-dot"></span> Atendimento rápido em São Paulo</div>
-          <h1>Caçamba entregue <span>hoje</span> no seu bairro</h1>
-          <p class="hero-lead">Aluguel de caçambas para obras, reformas e limpezas. Atendimento direto, preço combinado antes da entrega e retirada programada.</p>
-
-          <div class="hero-badges">
-            <span>✓ Atendimento ágil</span>
-            <span>✓ Entrega conforme disponibilidade</span>
-            <span>✓ Descarte responsável</span>
-          </div>
-
-          <div class="hero-actions">
-            <a class="btn btn-whatsapp btn-large js-whatsapp" href="#" data-message="Olá! Preciso de uma caçamba hoje em São Paulo. Pode verificar a disponibilidade?">SOLICITAR NO WHATSAPP</a>
-            <a class="btn btn-checkout btn-large js-checkout" href="#">RESERVAR E PAGAR ONLINE</a>
-          </div>
-          <p class="microcopy">Escolha atendimento pelo WhatsApp ou conclua a reserva diretamente pelo checkout.</p>
-
-          <div class="trust-strip">
-            <div><strong>Preço fechado</strong><span>Sem surpresa no final</span></div>
-            <div><strong>Entrega rápida</strong><span>Consulte sua região</span></div>
-            <div><strong>Atendimento SP</strong><span>Capital e Grande SP</span></div>
-          </div>
-        </div>
-
-        <div class="hero-visual" aria-label="Ilustração de caçamba e caminhão">
-          <div class="availability-card">
-            <span class="pulse"></span>
-            <div><strong>Equipe atendendo agora</strong><small>Consulte disponibilidade na sua região</small></div>
-          </div>
-          <div class="city-skyline"></div>
-          <div class="truck">
-            <div class="truck-cabin"><span></span></div>
-            <div class="truck-bed"><div class="dumpster"><b>DISK</b><small>CAÇAMBA</small></div></div>
-            <i class="wheel wheel-one"></i><i class="wheel wheel-two"></i>
-          </div>
-        </div>
+<main>
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">ATENDIMENTO EM SÃO PAULO E REGIÃO</span>
+      <h1>Aluguel de caçamba em <em>São Paulo</em></h1>
+      <p>Solução rápida para sua obra, reforma ou limpeza. Consulte agora e receba atendimento pelo WhatsApp ou faça a reserva online.</p>
+      <div class="hero-actions">
+        <a class="btn btn-whatsapp track-whatsapp" href="#" data-message="Olá! Preciso de uma caçamba em São Paulo. Pode me passar disponibilidade e valor?">Falar no WhatsApp</a>
+        <a class="btn btn-checkout track-checkout" href="#">Reservar online</a>
       </div>
-    </section>
-
-    <section class="proof-bar">
-      <div class="container proof-grid">
-        <div><b>Atendimento direto</b><span>Sem enrolação</span></div>
-        <div><b>Vários tamanhos</b><span>Para cada tipo de obra</span></div>
-        <div><b>Reserva online</b><span>Pagamento via PIX</span></div>
-        <div><b>Retirada programada</b><span>Conforme combinado</span></div>
+      <div class="trust-row">
+        <span>⚡ Atendimento rápido</span><span>🛡️ Processo seguro</span><span>♻️ Retirada programada</span>
       </div>
-    </section>
-
-    <section class="section" id="regioes">
-      <div class="container">
-        <div class="section-heading">
-          <span>COBERTURA EM SÃO PAULO</span>
-          <h2>Atendimento rápido na capital e Grande SP</h2>
-          <p>Informe seu bairro ou CEP para confirmarmos a disponibilidade e o prazo de entrega.</p>
-        </div>
-        <div class="region-grid">
-          <article><h3>Zona Leste</h3><p>Tatuapé, Mooca, Itaquera, Penha, Vila Matilde, São Mateus, Anália Franco e região.</p></article>
-          <article><h3>Zona Norte</h3><p>Santana, Tucuruvi, Casa Verde, Vila Maria, Jaçanã, Freguesia do Ó e região.</p></article>
-          <article><h3>Zona Sul</h3><p>Jabaquara, Saúde, Ipiranga, Santo Amaro, Campo Limpo, Interlagos e região.</p></article>
-          <article><h3>Zona Oeste e Centro</h3><p>Pinheiros, Lapa, Butantã, Perdizes, Barra Funda, Centro e bairros próximos.</p></article>
-          <article><h3>ABC Paulista</h3><p>Santo André, São Bernardo do Campo, São Caetano do Sul e Diadema.</p></article>
-          <article><h3>Grande São Paulo</h3><p>Guarulhos, Osasco, Barueri, Carapicuíba e cidades atendidas sob consulta.</p></article>
-        </div>
-        <div class="center-actions">
-          <a class="btn btn-dark js-whatsapp" href="#" data-message="Olá! Quero confirmar se vocês atendem meu bairro em São Paulo.">CONSULTAR MEU BAIRRO</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-dark" id="tamanhos">
-      <div class="container">
-        <div class="section-heading light">
-          <span>ESCOLHA A CAÇAMBA</span>
-          <h2>Do descarte pequeno à grande obra</h2>
-          <p>Selecione uma opção e siga pelo WhatsApp ou pela reserva online.</p>
-        </div>
-        <div class="size-grid">
-          <article class="size-card">
-            <div class="size-icon small-dumpster">3–4m³</div>
-            <h3>Caçamba pequena</h3>
-            <p>Ideal para reformas leves, limpezas, pequenas demolições e espaços com acesso reduzido.</p>
-            <ul><li>Reforma de apartamento</li><li>Entulho residencial</li><li>Pequeno volume</li></ul>
-            <div class="card-actions"><a class="btn btn-whatsapp js-whatsapp" href="#" data-message="Olá! Quero orçamento para uma caçamba de 3 ou 4m³.">WhatsApp</a><a class="text-link js-checkout" href="#" data-size="4">Reservar online →</a></div>
-          </article>
-          <article class="size-card featured">
-            <div class="popular">MAIS PEDIDA</div>
-            <div class="size-icon">5m³</div>
-            <h3>Caçamba padrão</h3>
-            <p>Boa escolha para obras residenciais, reformas comerciais e volumes médios de entulho.</p>
-            <ul><li>Melhor custo-benefício</li><li>Concreto e alvenaria</li><li>Obras médias</li></ul>
-            <div class="card-actions"><a class="btn btn-whatsapp js-whatsapp" href="#" data-message="Olá! Quero orçamento para uma caçamba de 5m³.">WhatsApp</a><a class="text-link js-checkout" href="#" data-size="5">Reservar online →</a></div>
-          </article>
-          <article class="size-card">
-            <div class="size-icon large-dumpster">7m³+</div>
-            <h3>Caçamba grande</h3>
-            <p>Para grandes reformas, condomínios, demolições e serviços com alto volume de resíduos.</p>
-            <ul><li>Grandes construções</li><li>Demolição</li><li>Alto volume</li></ul>
-            <div class="card-actions"><a class="btn btn-whatsapp js-whatsapp" href="#" data-message="Olá! Quero orçamento para uma caçamba de 7m³ ou maior.">WhatsApp</a><a class="text-link js-checkout" href="#" data-size="7">Reservar online →</a></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="como-funciona">
-      <div class="container">
-        <div class="section-heading"><span>SIMPLES E RÁPIDO</span><h2>Você escolhe como contratar</h2></div>
-        <div class="path-grid">
-          <article class="path-card whatsapp-path">
-            <span class="path-label">ATENDIMENTO</span>
-            <h3>Fechar pelo WhatsApp</h3>
-            <ol><li>Envie seu bairro e o tipo de material.</li><li>Receba a disponibilidade e o valor.</li><li>Confirme a entrega com o atendente.</li></ol>
-            <a class="btn btn-whatsapp js-whatsapp" href="#" data-message="Olá! Quero fechar o aluguel de uma caçamba pelo WhatsApp.">FALAR COM ATENDENTE</a>
-          </article>
-          <article class="path-card checkout-path">
-            <span class="path-label">AUTOSSERVIÇO</span>
-            <h3>Reservar pelo checkout</h3>
-            <ol><li>Escolha o tamanho da caçamba.</li><li>Informe seus dados, endereço e data.</li><li>Pague por PIX e finalize a solicitação.</li></ol>
-            <a class="btn btn-checkout js-checkout" href="#">RESERVAR SEM CONVERSAR</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section urgency-section">
-      <div class="container urgency-box">
-        <div><span>PRECISA RESOLVER HOJE?</span><h2>Temos equipes atendendo diferentes regiões de São Paulo.</h2><p>Consulte agora o prazo para seu bairro. A disponibilidade pode mudar ao longo do dia.</p></div>
-        <a class="btn btn-whatsapp btn-large js-whatsapp" href="#" data-message="Olá! Preciso de uma caçamba com urgência. Pode verificar meu bairro agora?">VER DISPONIBILIDADE</a>
-      </div>
-    </section>
-
-    <section class="section section-muted">
-      <div class="container">
-        <div class="section-heading"><span>POR QUE ESCOLHER A DISK CAÇAMBA</span><h2>Contratação direta, segura e sem complicação</h2></div>
-        <div class="benefit-grid">
-          <article><b>01</b><h3>Preço combinado</h3><p>Você recebe as condições antes de confirmar o pedido.</p></article>
-          <article><b>02</b><h3>Atendimento ágil</h3><p>Contato rápido para verificar bairro, tamanho e disponibilidade.</p></article>
-          <article><b>03</b><h3>Reserva 24 horas</h3><p>O checkout fica disponível para quem prefere contratar sozinho.</p></article>
-          <article><b>04</b><h3>Retirada programada</h3><p>Entrega e retirada alinhadas conforme as condições do pedido.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="duvidas">
-      <div class="container faq-layout">
-        <div class="faq-intro"><span>DÚVIDAS FREQUENTES</span><h2>O que você precisa saber antes de reservar</h2><p>As condições finais dependem do bairro, do material, do período e da disponibilidade operacional.</p></div>
-        <div class="faq-list">
-          <details open><summary>Quanto custa alugar uma caçamba em São Paulo?</summary><p>O valor varia conforme bairro, tamanho, material, prazo e logística. Envie seu CEP pelo WhatsApp ou avance no checkout para consultar as condições.</p></details>
-          <details><summary>Posso colocar a caçamba na rua?</summary><p>A instalação deve respeitar as regras locais, o espaço disponível e as exigências aplicáveis. A equipe orientará o posicionamento conforme o caso.</p></details>
-          <details><summary>Quais materiais não podem ser descartados?</summary><p>Não descarte lixo hospitalar, químico, inflamável, tóxico, orgânico ou materiais proibidos. Informe o tipo de resíduo antes da contratação.</p></details>
-          <details><summary>Como funciona o checkout online?</summary><p>Você escolhe a caçamba, informa CPF/CNPJ, WhatsApp, CEP, endereço e data; depois recebe a opção de pagamento via PIX e a confirmação da solicitação.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="final-cta">
-      <div class="container"><span>DISK CAÇAMBA SÃO PAULO</span><h2>Sua obra não precisa ficar parada.</h2><p>Peça atendimento agora ou faça sua reserva online em poucos passos.</p><div class="hero-actions centered"><a class="btn btn-whatsapp btn-large js-whatsapp" href="#" data-message="Olá! Quero pedir uma caçamba em São Paulo agora.">CHAMAR NO WHATSAPP</a><a class="btn btn-light btn-large js-checkout" href="#">IR PARA O CHECKOUT</a></div></div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-grid">
-      <div class="brand footer-brand"><span class="brand-mark">DC</span><span><strong>DISK</strong> CAÇAMBA</span></div>
-      <p>Aluguel de caçambas em São Paulo. Atendimento, reserva online e retirada programada.</p>
-      <div class="footer-links"><a href="privacidade.html">Política de Privacidade</a><a href="termos.html">Termos de Uso</a></div>
     </div>
-    <div class="container legal">© <span id="year"></span> Disk Caçamba. Substitua este texto pelos dados reais da empresa, CNPJ e canais oficiais.</div>
-  </footer>
+    <div class="hero-visual" aria-label="Caçamba amarela da Disk Caçamba"></div>
+  </div>
+</section>
 
-  <a class="floating-whatsapp js-whatsapp" href="#" data-message="Olá! Vim pelo site da Disk Caçamba e quero um orçamento." aria-label="Falar no WhatsApp"><span>WhatsApp</span></a>
+<section class="proof-strip">
+  <div class="container proof-grid">
+    <div><b>Entrega ágil</b><small>Conforme rota e disponibilidade</small></div>
+    <div><b>Preço transparente</b><small>Valor informado antes da reserva</small></div>
+    <div><b>Atendimento humano</b><small>Suporte direto pelo WhatsApp</small></div>
+    <div><b>Reserva online</b><small>Checkout disponível 24 horas</small></div>
+  </div>
+</section>
 
-  <div class="modal" id="leadModal" aria-hidden="true">
-    <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" data-close-modal aria-label="Fechar">×</button>
-      <span>CONSULTA RÁPIDA</span>
-      <h2 id="modalTitle">Como prefere continuar?</h2>
-      <p>Fale com um atendente ou faça a reserva diretamente.</p>
-      <a class="btn btn-whatsapp js-whatsapp" href="#" data-message="Olá! Quero consultar uma caçamba em São Paulo.">WhatsApp</a>
-      <a class="btn btn-checkout js-checkout" href="#">Reserva online</a>
+<section class="section" id="cacambas">
+  <div class="container">
+    <div class="section-heading"><span>ESCOLHA O TAMANHO</span><h2>Uma caçamba para cada tipo de serviço</h2><p>Escolha uma opção e continue pelo WhatsApp ou pelo checkout.</p></div>
+    <div class="sizes-banner"><img src="cacambas-modelos.webp" alt="Modelos de caçambas amarelas Disk Caçamba" loading="lazy"></div>
+    <div class="cards">
+      <article class="card"><div class="dumpster">3 m³</div><h3>Caçamba compacta</h3><p>Indicada para pequenas reformas, limpezas e pouco volume de entulho.</p><button class="card-action" data-size="3 m³">Reservar 3 m³</button></article>
+      <article class="card"><div class="dumpster">4 m³</div><h3>Pequenas reformas</h3><p>Boa opção para apartamentos, banheiros, cozinhas e obras residenciais.</p><button class="card-action" data-size="4 m³">Reservar 4 m³</button></article>
+      <article class="card featured"><span class="badge">MAIS PEDIDA</span><div class="dumpster">5 m³</div><h3>Tamanho padrão</h3><p>Versátil para reformas em geral e retirada de entulho de médio volume.</p><button class="card-action" data-size="5 m³">Reservar 5 m³</button></article>
+      <article class="card"><div class="dumpster">7 m³</div><h3>Obras maiores</h3><p>Para reformas amplas e serviços que geram mais resíduos.</p><button class="card-action" data-size="7 m³">Reservar 7 m³</button></article>
+      <article class="card"><div class="dumpster">10 m³</div><h3>Grande volume</h3><p>Indicada para construções, empresas e demandas de maior porte.</p><button class="card-action" data-size="10 m³">Reservar 10 m³</button></article>
+      <article class="card"><div class="dumpster">16 m³</div><h3>Uso industrial</h3><p>Para grandes volumes, conforme análise e disponibilidade operacional.</p><button class="card-action" data-size="16 m³">Consultar 16 m³</button></article>
     </div>
   </div>
+</section>
 
-  <script src="config.js"></script>
-  <script src="script.js"></script>
-</body>
-</html>
+<section class="dark-section">
+  <div class="container"><div class="section-heading light"><span>POR QUE ESCOLHER</span><h2>Disk Caçamba: simples, rápida e direta</h2></div>
+  <div class="benefits"><div>✓ <b>Atendimento ágil</b><small>Resposta rápida para agilizar sua obra.</small></div><div>✓ <b>Reserva digital</b><small>Conclua sem precisar conversar.</small></div><div>✓ <b>Retirada combinada</b><small>Organização do início ao fim.</small></div><div>✓ <b>Atendimento regional</b><small>São Paulo e cidades selecionadas.</small></div></div></div>
+</section>
+
+<section class="section" id="regioes">
+ <div class="container region-grid"><div><span class="eyebrow orange">ONDE ATENDEMOS</span><h2>São Paulo e região metropolitana</h2><p>Consulte a disponibilidade para o seu bairro. A confirmação depende da rota, do endereço e do tipo de serviço.</p><a class="btn btn-dark track-whatsapp" href="#" data-message="Olá! Quero verificar se a Disk Caçamba atende meu endereço.">Verificar meu endereço</a></div>
+ <div class="region-cards"><span>Zona Norte</span><span>Zona Sul</span><span>Zona Leste</span><span>Zona Oeste</span><span>Centro</span><span>Guarulhos</span><span>Osasco</span><span>ABC Paulista</span></div></div>
+</section>
+
+<section class="steps" id="como-funciona"><div class="container"><div class="section-heading"><span>PASSO A PASSO</span><h2>Como funciona?</h2></div><div class="step-grid"><div><b>1</b><h3>Escolha o canal</h3><p>WhatsApp ou reserva online.</p></div><div><b>2</b><h3>Informe o endereço</h3><p>Preencha os dados da entrega.</p></div><div><b>3</b><h3>Confirme a reserva</h3><p>Revise o pedido e o pagamento.</p></div><div><b>4</b><h3>Entrega e retirada</h3><p>Serviço programado conforme confirmação.</p></div></div></div></section>
+
+<section class="cta-section"><div class="container cta-grid"><div><span class="eyebrow">PRECISA DE UMA CAÇAMBA?</span><h2>Resolva agora, do jeito que preferir.</h2><p>Fale com nossa equipe ou conclua sua reserva diretamente pelo checkout.</p><div class="hero-actions"><a class="btn btn-whatsapp track-whatsapp" href="#" data-message="Olá! Quero alugar uma caçamba agora.">Chamar no WhatsApp</a><a class="btn btn-checkout track-checkout" href="#">Ir para o checkout</a></div></div><img src="caminhao-disk-cacamba.webp" alt="Caminhão da Disk Caçamba" loading="lazy"></div></section>
+
+<section class="section faq" id="faq"><div class="container"><div class="section-heading"><span>PERGUNTAS FREQUENTES</span><h2>Dúvidas comuns</h2></div>
+<details><summary>Qual é o valor do aluguel?</summary><p>O valor varia conforme tamanho, endereço, período e disponibilidade. Consulte pelo WhatsApp ou avance no checkout.</p></details>
+<details><summary>Posso reservar sem falar no WhatsApp?</summary><p>Sim. Use o botão “Reservar online” para acessar o checkout da Disk Caçamba.</p></details>
+<details><summary>Quais materiais podem ser colocados?</summary><p>O tipo de resíduo deve ser informado antes da confirmação. Materiais perigosos, líquidos e itens não permitidos exigem orientação específica.</p></details>
+<details><summary>Vocês atendem toda a cidade de São Paulo?</summary><p>A cobertura depende do bairro, rota e disponibilidade. Consulte seu CEP para confirmação.</p></details>
+</div></section>
+</main>
+
+<footer><div class="container footer-grid"><div class="brand footer-brand"><span class="brand-mark">▰</span><span><b>DISK</b><strong>CAÇAMBA</strong></span></div><div><b>Contato</b><a class="track-whatsapp" href="#" data-message="Olá! Vim pelo rodapé do site.">(11) 92633-6542</a><span>São Paulo — SP</span></div><div><b>Informações</b><a href="privacidade.html">Privacidade</a><a href="termos.html">Termos de uso</a></div><div><b>Atalhos</b><a href="#cacambas">Caçambas</a><a href="#regioes">Regiões</a></div></div><div class="container copyright">© <span id="year"></span> Disk Caçamba. Todos os direitos reservados.</div></footer>
+
+<a class="floating-whatsapp track-whatsapp" href="#" aria-label="Falar no WhatsApp" data-message="Olá! Quero um orçamento para caçamba.">☏</a>
+<div class="mobile-bar"><a class="track-whatsapp" href="#" data-message="Olá! Quero um orçamento para caçamba.">WhatsApp</a><a class="track-checkout" href="#">Reservar online</a></div>
+<script src="config.js"></script><script src="script.js"></script>
+</body></html>

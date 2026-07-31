@@ -1,7 +1,1 @@
-{
-  "name": "disk-cacamba-ads",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {"start": "node server.js"},
-  "engines": {"node": ">=18"}
-}
+{"name":"disk-cacamba","version":"2.0.0","private":true,"scripts":{"start":"node server.js"},"dependencies":{"express":"^4.21.2"},"engines":{"node":">=18"}}

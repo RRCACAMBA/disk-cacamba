@@ -1,73 +1,20 @@
 (() => {
-  const config = window.DISK_CACAMBA_CONFIG || {};
-  const params = new URLSearchParams(window.location.search);
-
-  const tracking = {
-    utm_source: params.get('utm_source') || '',
-    utm_medium: params.get('utm_medium') || '',
-    utm_campaign: params.get('utm_campaign') || '',
-    utm_term: params.get('utm_term') || '',
-    utm_content: params.get('utm_content') || '',
-    gclid: params.get('gclid') || '',
-    gbraid: params.get('gbraid') || '',
-    wbraid: params.get('wbraid') || ''
-  };
-
-  localStorage.setItem('disk_cacamba_tracking', JSON.stringify(tracking));
-
-  function fireEvent(eventName, extra = {}) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: eventName, ...tracking, ...extra });
-  }
-
-  function buildWhatsAppLink(message) {
-    const number = String(config.whatsappNumber || '').replace(/\D/g, '');
-    const campaignInfo = tracking.utm_campaign ? `\nCampanha: ${tracking.utm_campaign}` : '';
-    return `https://wa.me/${number}?text=${encodeURIComponent(message + campaignInfo)}`;
-  }
-
-  document.querySelectorAll('.js-whatsapp').forEach(link => {
-    link.addEventListener('click', event => {
-      event.preventDefault();
-      const message = link.dataset.message || 'Olá! Quero um orçamento de caçamba.';
-      fireEvent('click_whatsapp', { button_text: link.textContent.trim() });
-      window.location.href = buildWhatsAppLink(message);
-    });
-  });
-
-  document.querySelectorAll('.js-checkout').forEach(link => {
-    link.addEventListener('click', event => {
-      event.preventDefault();
-      const selectedSize = link.dataset.size || '';
-      fireEvent('begin_checkout', { dumpster_size: selectedSize });
-
-      const checkout = new URL(config.checkoutUrl || '/checkout', window.location.href);
-      Object.entries(tracking).forEach(([key, value]) => value && checkout.searchParams.set(key, value));
-      selectedSize && checkout.searchParams.set('tamanho', selectedSize);
-      window.location.href = checkout.toString();
-    });
-  });
-
-  document.querySelector('#year').textContent = new Date().getFullYear();
-
-  document.querySelectorAll('details').forEach(detail => {
-    detail.addEventListener('toggle', () => detail.open && fireEvent('faq_open', { question: detail.querySelector('summary').textContent }));
-  });
-
-  const modal = document.querySelector('#leadModal');
-  const closeModal = () => {
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-  };
-  document.querySelectorAll('[data-close-modal]').forEach(el => el.addEventListener('click', closeModal));
-
-  // Exibe uma alternativa de conversão após 35 segundos, apenas uma vez por sessão.
-  setTimeout(() => {
-    if (!sessionStorage.getItem('disk_modal_seen')) {
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-      sessionStorage.setItem('disk_modal_seen', '1');
-      fireEvent('conversion_choice_modal_view');
-    }
-  }, 35000);
+  const cfg = window.DISK_CONFIG || {};
+  const whatsapp = String(cfg.whatsappNumber || '5511926336542').replace(/\D/g, '');
+  const checkout = cfg.checkoutUrl || 'https://disk-cacamba-production.up.railway.app/';
+  const params = new URLSearchParams(location.search);
+  const trackingKeys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','gbraid','wbraid'];
+  const tracking = {}; trackingKeys.forEach(k=>{if(params.get(k)) tracking[k]=params.get(k)});
+  try{ if(Object.keys(tracking).length) localStorage.setItem('disk_tracking', JSON.stringify(tracking)); }catch(e){}
+  function savedTracking(){ try{return {...JSON.parse(localStorage.getItem('disk_tracking')||'{}'),...tracking}}catch(e){return tracking} }
+  function track(event, extra={}){ window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event,...extra}); }
+  document.querySelectorAll('.track-whatsapp').forEach(el=>el.addEventListener('click',ev=>{
+    ev.preventDefault(); const msg=el.dataset.message||'Olá! Quero um orçamento para caçamba.';
+    track('whatsapp_click',{placement:el.textContent.trim()});
+    location.href=`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`;
+  }));
+  function checkoutUrl(size){ const u=new URL(checkout); Object.entries(savedTracking()).forEach(([k,v])=>u.searchParams.set(k,v)); if(size)u.searchParams.set('tamanho',size); return u.toString(); }
+  document.querySelectorAll('.track-checkout').forEach(el=>el.addEventListener('click',ev=>{ev.preventDefault();track('checkout_click',{placement:el.textContent.trim()});location.href=checkoutUrl();}));
+  document.querySelectorAll('.card-action').forEach(el=>el.addEventListener('click',()=>{const size=el.dataset.size;track('checkout_size_click',{size});location.href=checkoutUrl(size);}));
+  const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
 })();
