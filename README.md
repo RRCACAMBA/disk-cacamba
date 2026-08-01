@@ -1,9 +1,17 @@
-# Disk Caçamba V4 Corrigido
+# Disk Caçamba V22 — Mapa de Procura
 
-Correções desta versão:
-- Todos os botões das caçambas abrem o WhatsApp.
-- O tamanho escolhido é incluído automaticamente na mensagem.
-- Removidos os símbolos de asterisco das mensagens de entrega em até 2 horas.
+Projeto completo baseado na versão atual enviada.
+
+## Melhorias desta versão
+- Novo mapa visual de procura e cobertura da Grande São Paulo.
+- Marcadores pulsantes por região.
+- Legenda de maior procura, procura moderada e área atendida.
+- Clique em cada região abre o WhatsApp com a localidade preenchida.
 - Conversão do Google Ads mantida nos cliques do WhatsApp.
+- Mão de obra por R$ 80,00 preservada.
+- Reserva online, formulário, SEO, páginas legais e imagens preservados.
+- Frase de entrega em até 2 horas sem asterisco.
+- Layout responsivo para celular e computador.
 
-Para publicar, substitua todos os arquivos atuais pelos arquivos deste projeto.
+## Publicação
+Substitua todos os arquivos do repositório atual pelos arquivos deste ZIP e faça o deploy no Railway.

@@ -110,6 +110,24 @@ Gostaria de confirmar disponibilidade, prazo expressa e valor.`;
 });
 
 
+
+  const mapTooltipV22 = document.getElementById('mapTooltipV22');
+  document.querySelectorAll('.map-point-v22').forEach(point => {
+    const showPoint = () => {
+      if (!mapTooltipV22) return;
+      mapTooltipV22.querySelector('strong').textContent = point.dataset.region;
+      mapTooltipV22.querySelector('span').textContent = point.dataset.status;
+    };
+    point.addEventListener('mouseenter', showPoint);
+    point.addEventListener('focus', showPoint);
+    point.addEventListener('click', () => {
+      showPoint();
+      sendEvent('map_region_click', {region: point.dataset.region, status: point.dataset.status});
+      reportWhatsAppConversion();
+      window.open(waUrl(`Olá! Vim pelo mapa do site da Disk Caçamba e gostaria de consultar entrega para ${point.dataset.region}. Meu bairro/CEP é: `), '_blank', 'noopener');
+    });
+  });
+
   const activityMessages = [
     ['⚡ Entrega expressa disponível', 'Consulte prazo para Santana e região'],
     ['👷 Adicional de mão de obra', 'Inclua por R$ 80,00 junto com a caçamba'],

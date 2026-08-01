@@ -21,7 +21,7 @@
   <meta property="og:image" content="/hero.webp?v=20">
   <link rel="canonical" href="https://www.reteccacamba.com.br/">
   <link rel="preload" href="hero.webp?v=20" as="image" type="image/webp">
-  <link rel="stylesheet" href="styles.css?v=20">
+  <link rel="stylesheet" href="styles.css?v=22">
   <script type="application/ld+json" id="schemaJson"></script>
 </head>
 <body>
@@ -126,27 +126,59 @@
     </section>
 
 <section class="section demand-map-section" id="mapa-atendimento">
-      <div class="container demand-layout">
+      <div class="container demand-layout demand-layout-v22">
         <div class="demand-copy reveal">
-          <span class="kicker">Cobertura de atendimento</span>
-          <h2>Regiões em destaque para entrega rápida</h2>
-          <p>O mapa abaixo é ilustrativo e ajuda o cliente a identificar as principais áreas de atendimento. O prazo de até 2 horas depende da região e da disponibilidade no momento do pedido.</p>
+          <span class="live-map-label"><i></i> Cobertura de atendimento</span>
+          <span class="kicker">São Paulo e Grande SP</span>
+          <h2>Mapa de procura e entrega rápida</h2>
+          <p>Veja as principais regiões atendidas. Os destaques mostram áreas estratégicas para consulta de entrega expressa. O prazo de até 2 horas depende da região, trânsito e disponibilidade operacional.</p>
+
+          <div class="demand-summary" aria-label="Resumo da cobertura">
+            <article><strong>5</strong><span>zonas da capital</span></article>
+            <article><strong>Grande SP</strong><span>cidades selecionadas</span></article>
+            <article><strong>Até 2h</strong><span>mediante confirmação</span></article>
+          </div>
+
+          <div class="heat-legend-v22" aria-label="Legenda do mapa">
+            <span><b class="legend-high"></b> Maior procura</span>
+            <span><b class="legend-medium"></b> Procura moderada</span>
+            <span><b class="legend-covered"></b> Área atendida</span>
+          </div>
+
           <div class="region-highlight-list">
             <span>Santana</span><span>Casa Verde</span><span>Limão</span><span>Freguesia do Ó</span>
             <span>Barra Funda</span><span>Lapa</span><span>Mooca</span><span>Tatuapé</span>
             <span>Vila Mariana</span><span>Pinheiros</span><span>Guarulhos</span><span>Osasco</span>
           </div>
           <a class="button button-whatsapp wa-link" href="#"><span>Consultar meu endereço</span><small>Confirmar prazo pelo WhatsApp</small></a>
+          <small class="map-data-note">Mapa ilustrativo de cobertura. As regiões destacadas podem ser atualizadas futuramente com os dados reais do Google Ads.</small>
         </div>
-        <div class="heat-map reveal" aria-label="Mapa ilustrativo de cobertura em São Paulo">
-          <div class="heat-map-shape">
-            <i class="hotspot hs1">Zona Norte</i>
-            <i class="hotspot hs2">Centro</i>
-            <i class="hotspot hs3">Zona Leste</i>
-            <i class="hotspot hs4">Zona Oeste</i>
-            <i class="hotspot hs5">Zona Sul</i>
+
+        <div class="heat-map heat-map-v22 reveal" aria-label="Mapa ilustrativo de procura e cobertura em São Paulo">
+          <div class="heat-map-header">
+            <div><strong>Demanda por região</strong><span>São Paulo e Grande SP</span></div>
+            <span class="map-status"><i></i> Atendimento ativo</span>
           </div>
-          <div class="map-legend"><span><b class="legend-fast"></b> Cobertura expressa</span><span><b class="legend-normal"></b> Demais regiões atendidas</span></div>
+
+          <div class="heat-map-canvas">
+            <div class="map-grid-v22"></div>
+            <div class="heat-map-shape heat-map-shape-v22"></div>
+
+            <button class="map-point-v22 point-high mp-norte" type="button" data-region="Zona Norte" data-status="Maior procura"><i></i><span>Zona Norte</span></button>
+            <button class="map-point-v22 point-high mp-centro" type="button" data-region="Centro" data-status="Maior procura"><i></i><span>Centro</span></button>
+            <button class="map-point-v22 point-medium mp-leste" type="button" data-region="Zona Leste" data-status="Procura moderada"><i></i><span>Zona Leste</span></button>
+            <button class="map-point-v22 point-medium mp-oeste" type="button" data-region="Zona Oeste" data-status="Procura moderada"><i></i><span>Zona Oeste</span></button>
+            <button class="map-point-v22 point-covered mp-sul" type="button" data-region="Zona Sul" data-status="Área atendida"><i></i><span>Zona Sul</span></button>
+            <button class="map-point-v22 point-high mp-guarulhos" type="button" data-region="Guarulhos" data-status="Maior procura"><i></i><span>Guarulhos</span></button>
+            <button class="map-point-v22 point-covered mp-osasco" type="button" data-region="Osasco" data-status="Área atendida"><i></i><span>Osasco</span></button>
+            <button class="map-point-v22 point-medium mp-abc" type="button" data-region="ABC Paulista" data-status="Procura moderada"><i></i><span>ABC</span></button>
+
+            <div class="map-tooltip-v22" id="mapTooltipV22"><strong>Zona Norte</strong><span>Maior procura</span></div>
+          </div>
+
+          <div class="map-region-strip">
+            <span>São Paulo</span><span>Guarulhos</span><span>Osasco</span><span>Santo André</span><span>São Bernardo</span><span>Diadema</span><span>Barueri</span><span>Taboão</span>
+          </div>
         </div>
       </div>
     </section>
@@ -207,7 +239,7 @@
     <span class="activity-icon">⚡</span><div><strong id="activityTitle">Entrega expressa disponível</strong><small id="activityText">Consulte sua região pelo WhatsApp</small></div>
   </div>
   <button class="back-top" type="button" aria-label="Voltar ao topo">↑</button>
-  <script src="config.js?v=20"></script>
-<script src="script.js?v=21"></script>
+  <script src="config.js?v=22"></script>
+<script src="script.js?v=22"></script>
 </body>
 </html>
