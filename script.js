@@ -6,21 +6,32 @@
   const tracked = new URLSearchParams();
   trackedKeys.forEach(k => { if (params.get(k)) tracked.set(k, params.get(k)); });
 
-  const sendEvent = (event, extra={}) => {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({event, ...extra});
-  };
-  const waUrl = message => `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(message || cfg.whatsappMessage || 'Olá!')}`;
+const sendEvent = (event, extra={}) => {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({event, ...extra});
+};
+const reportWhatsAppConversion = () => {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', 'conversion', {
+    send_to: 'AW-18362672744/BT1hcOmNqNocEOjMgLRE',
+    value: 1.0,
+    currency: 'BRL'
+  });
+};
+const waUrl = message => `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(message || cfg.whatsappMessage || 'Olá!')}`;
   const checkoutUrl = size => {
     const url = new URL(cfg.checkoutUrl, location.href);
     tracked.forEach((v,k)=>url.searchParams.set(k,v));
     if(size) url.searchParams.set('cacamba',size);
     return url.toString();
   };
-  document.querySelectorAll('.wa-link').forEach(a => {
-    a.href = waUrl(); a.target='_blank'; a.rel='noopener';
-    a.addEventListener('click',()=>sendEvent('whatsapp_click',{location:a.closest('section,header,footer')?.id||'page'}));
+document.querySelectorAll('.wa-link').forEach(a => {
+  a.href = waUrl(); a.target='_blank'; a.rel='noopener';
+  a.addEventListener('click',()=>{
+    reportWhatsAppConversion();
+    sendEvent('whatsapp_click',{location:a.closest('section,header,footer')?.id||'page'});
   });
+});
   document.querySelectorAll('.checkout-link').forEach(a => {
     a.href = checkoutUrl();
     a.addEventListener('click',()=>sendEvent('checkout_click',{location:a.closest('section,header,footer')?.id||'page'}));
@@ -40,11 +51,14 @@
   ];
   const grid = document.getElementById('dumpsterGrid');
   grid.innerHTML = sizes.map(s => `<article class="dumpster-card ${s.featured?'featured':''}">${s.featured?'<span class="popular-tag">MAIS PEDIDA</span>':''}<div class="dumpster-visual"><img src="cacamba.webp?v=20" width="380" height="230" loading="lazy" alt="Caçamba amarela Disk Caçamba ${s.size}"></div><div class="dumpster-body"><div class="dumpster-title"><h3>${s.size}</h3><span>${s.tag}</span></div><div class="dimensions">${s.dims.map(d=>`<span>${d}</span>`).join('')}</div><p>${s.use}</p><a class="button button-book size-checkout" data-size="${s.size}" href="#"><span>${s.consult?'Consultar':'Reservar esta caçamba'}</span><small>${s.consult?'Via WhatsApp':'Ir para o checkout'}</small></a></div></article>`).join('');
-  document.querySelectorAll('.size-checkout').forEach(a=>{
-    const size=a.dataset.size;
-    if(size==='16 m³'){a.href=waUrl(`Olá! Gostaria de consultar a caçamba de ${size}. Meu bairro/CEP é: `);a.target='_blank'}else{a.href=checkoutUrl(size)}
-    a.addEventListener('click',()=>sendEvent(size==='16 m³'?'whatsapp_size_click':'checkout_size_click',{size}));
+document.querySelectorAll('.size-checkout').forEach(a=>{
+  const size=a.dataset.size;
+  if(size==='16 m³'){a.href=waUrl(`Olá! Gostaria de consultar a caçamba de ${size}. Meu bairro/CEP é: `);a.target='_blank'}else{a.href=checkoutUrl(size)}
+  a.addEventListener('click',()=>{
+    if(size==='16 m³') reportWhatsAppConversion();
+    sendEvent(size==='16 m³'?'whatsapp_size_click':'checkout_size_click',{size});
   });
+});
 
   const subprefs=['Aricanduva/Formosa','Butantã','Campo Limpo','Capela do Socorro','Casa Verde/Cachoeirinha','Cidade Ademar','Cidade Tiradentes','Ermelino Matarazzo','Freguesia/Brasilândia','Guaianases','Ipiranga','Itaim Paulista','Itaquera','Jabaquara','Jaçanã/Tremembé','Lapa','M’Boi Mirim','Mooca','Parelheiros','Penha','Perus/Anhanguera','Pinheiros','Pirituba/Jaraguá','Santana/Tucuruvi','Santo Amaro','São Mateus','São Miguel Paulista','Sapopemba','Sé','Vila Maria/Vila Guilherme','Vila Mariana','Vila Prudente'];
   document.getElementById('subprefList').innerHTML=subprefs.map(x=>`<span>${x}</span>`).join('');
@@ -65,11 +79,13 @@
   menuBtn.addEventListener('click',()=>{const open=menu.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));});
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}));
 
-  document.getElementById('leadForm').addEventListener('submit',e=>{
-    e.preventDefault(); const fd=new FormData(e.currentTarget);
-    const msg=`Olá! Vim pelo site da Disk Caçamba.\nNome: ${fd.get('name')}\nBairro/CEP: ${fd.get('location')}\nTamanho: ${fd.get('size')}\nGostaria de consultar disponibilidade.`;
-    sendEvent('lead_form_submit',{size:fd.get('size')}); window.open(waUrl(msg),'_blank','noopener');
-  });
+document.getElementById('leadForm').addEventListener('submit',e=>{
+  e.preventDefault(); const fd=new FormData(e.currentTarget);
+  const msg=`Olá! Vim pelo site da Disk Caçamba.\nNome: ${fd.get('name')}\nBairro/CEP: ${fd.get('location')}\nTamanho: ${fd.get('size')}\nGostaria de consultar disponibilidade.`;
+  sendEvent('lead_form_submit',{size:fd.get('size')});
+  reportWhatsAppConversion();
+  window.open(waUrl(msg),'_blank','noopener');
+});
 
   const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
