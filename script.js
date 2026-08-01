@@ -26,19 +26,11 @@ const waUrl = message => `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponen
     return url.toString();
   };
 document.querySelectorAll('.labor-link').forEach(a => {
-  a.href = waUrl(cfg.laborMessage || 'Olá! Gostaria de orçamento para caçamba com mão de obra.');
+  a.href = waUrl(cfg.laborMessage || 'Olá! Gostaria de alugar uma caçamba e adicionar mão de obra por R$ 80,00.');
   a.target = '_blank'; a.rel = 'noopener';
   a.addEventListener('click', () => {
     reportWhatsAppConversion();
-    sendEvent('labor_quote_click', {service:'cacamba_mao_de_obra'});
-  });
-});
-document.querySelectorAll('.labor-only-link').forEach(a => {
-  a.href = waUrl(cfg.laborOnlyMessage || 'Olá! Gostaria de consultar mão de obra.');
-  a.target = '_blank'; a.rel = 'noopener';
-  a.addEventListener('click', () => {
-    reportWhatsAppConversion();
-    sendEvent('labor_quote_click', {service:'somente_mao_de_obra'});
+    sendEvent('labor_quote_click', {service:'cacamba_com_mao_de_obra', price:80});
   });
 });
 document.querySelectorAll('.wa-link').forEach(a => {
@@ -66,7 +58,7 @@ document.querySelectorAll('.wa-link').forEach(a => {
     {size:'16 m³',dims:['4,10 m comp.','2,90 m larg.','1,60 m alt.'],use:'Grandes volumes e demolições.',tag:'Sob consulta',consult:true}
   ];
   const grid = document.getElementById('dumpsterGrid');
-  grid.innerHTML = sizes.map(s => `<article class="dumpster-card ${s.featured?'featured':''}">${s.featured?'<span class="popular-tag">MAIS PEDIDA</span>':''}<div class="dumpster-visual"><img src="cacamba.webp?v=20" width="380" height="230" loading="lazy" alt="Caçamba amarela Disk Caçamba ${s.size}"></div><div class="dumpster-body"><div class="dumpster-title"><h3>${s.size}</h3><span>${s.tag}</span></div><div class="dimensions">${s.dims.map(d=>`<span>${d}</span>`).join('')}</div><p>${s.use}</p><a class="button button-book size-checkout" data-size="${s.size}" href="#"><span>${s.consult?'Consultar':'Reservar esta caçamba'}</span><small>${s.consult?'Via WhatsApp':'Ir para o checkout'}</small></a></div></article>`).join('');
+  grid.innerHTML = sizes.map(s => `<article class="dumpster-card ${s.featured?'featured':''}">${s.featured?'<span class="popular-tag">MAIS PEDIDA</span>':''}<div class="dumpster-visual"><img src="cacamba.webp?v=20" width="380" height="230" loading="lazy" alt="Caçamba amarela Disk Caçamba ${s.size}"></div><div class="dumpster-body"><div class="dumpster-title"><h3>${s.size}</h3><span>${s.tag}</span></div><div class="dimensions">${s.dims.map(d=>`<span>${d}</span>`).join('')}</div><p>${s.use}</p><div class="card-extras"><span>⚡ Entrega em até 2 horas*</span><span>👷 Mão de obra + R$ 80,00</span></div><a class="button button-book size-checkout" data-size="${s.size}" href="#"><span>${s.consult?'Consultar':'Reservar esta caçamba'}</span><small>${s.consult?'Via WhatsApp':'Ir para o checkout'}</small></a></div></article>`).join('');
 document.querySelectorAll('.size-checkout').forEach(a=>{
   const size=a.dataset.size;
   if(size==='16 m³'){a.href=waUrl(`Olá! Gostaria de consultar a caçamba de ${size}. Meu bairro/CEP é: `);a.target='_blank'}else{a.href=checkoutUrl(size)}
@@ -80,6 +72,7 @@ document.querySelectorAll('.size-checkout').forEach(a=>{
   document.getElementById('subprefList').innerHTML=subprefs.map(x=>`<span>${x}</span>`).join('');
 
   const faqs=[
+    ['A entrega em até 2 horas é garantida?','O prazo é uma modalidade expressa sujeita à região, trânsito e disponibilidade operacional. A equipe confirma antes da contratação.'],
     ['Qual é o prazo de entrega?','O prazo depende da região, do trânsito e da disponibilidade operacional. A equipe confirma a previsão antes da contratação.'],
     ['Posso colocar a caçamba na rua?','A possibilidade depende das regras locais e das condições do endereço. Informe o local para receber a orientação adequada.'],
     ['Quais materiais posso descartar?','Informe o tipo de resíduo antes da reserva. Materiais perigosos, líquidos e itens com destinação especial podem não ser permitidos.'],
@@ -87,8 +80,8 @@ document.querySelectorAll('.size-checkout').forEach(a=>{
     ['Como funciona o pagamento?','As formas disponíveis são apresentadas no checkout ou informadas pela equipe antes da confirmação.'],
     ['A retirada é automática?','A retirada segue o prazo combinado. Quando necessário, confirme com a equipe pelo WhatsApp.'],
     ['Atendem condomínios e empresas?','Sim, mediante consulta do endereço, acesso e necessidade do serviço.'],
-    ['Posso contratar mão de obra junto com a caçamba?','Sim. Informe o tipo de material, quantidade, acesso e bairro para receber um orçamento combinado.'],
-    ['O valor da mão de obra é fixo?','Não. O valor depende do serviço, volume, acesso, pavimento, distância e tempo estimado.'],
+    ['Posso contratar mão de obra junto com a caçamba?','Sim. A mão de obra é um adicional de R$ 80,00 disponível junto com a locação da caçamba.'],
+    ['Quanto custa a mão de obra?','O adicional informado no site é de R$ 80,00 e deve ser contratado junto com a caçamba. Confirme o escopo antes do fechamento.'],
     ['As medidas são exatas?','São medidas aproximadas. O formato pode variar conforme o equipamento disponibilizado.']
   ];
   document.getElementById('faqList').innerHTML=faqs.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join('');
@@ -99,11 +92,40 @@ document.querySelectorAll('.size-checkout').forEach(a=>{
 
 document.getElementById('leadForm').addEventListener('submit',e=>{
   e.preventDefault(); const fd=new FormData(e.currentTarget);
-  const msg=`Olá! Vim pelo site da Disk Caçamba.\nNome: ${fd.get('name')}\nBairro/CEP: ${fd.get('location')}\nServiço: ${fd.get('service')}\nTamanho da caçamba: ${fd.get('size')}\nGostaria de consultar disponibilidade e valor.`;
+  const msg=`Olá! Vim pelo site da Disk Caçamba.
+Nome: ${fd.get('name')}
+Bairro/CEP: ${fd.get('location')}
+Serviço: ${fd.get('service')}
+Tamanho da caçamba: ${fd.get('size')}
+Gostaria de confirmar disponibilidade, prazo expressa e valor.`;
   sendEvent('lead_form_submit',{service:fd.get('service'),size:fd.get('size')});
   reportWhatsAppConversion();
   window.open(waUrl(msg),'_blank','noopener');
 });
+
+
+  const activityMessages = [
+    ['⚡ Entrega expressa disponível', 'Consulte prazo para Santana e região'],
+    ['👷 Adicional de mão de obra', 'Inclua por R$ 80,00 junto com a caçamba'],
+    ['📍 Atendimento em São Paulo', 'Confirme cobertura para seu bairro'],
+    ['🚛 Caçamba de 5 m³', 'Uma das opções mais procuradas no site'],
+    ['💬 Orçamento rápido', 'Fale diretamente pelo WhatsApp']
+  ];
+  const toast = document.getElementById('activityToast');
+  const toastTitle = document.getElementById('activityTitle');
+  const toastText = document.getElementById('activityText');
+  let activityIndex = 0;
+  const showActivity = () => {
+    if (!toast) return;
+    const [title, text] = activityMessages[activityIndex % activityMessages.length];
+    toastTitle.textContent = title;
+    toastText.textContent = text;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 5200);
+    activityIndex++;
+  };
+  setTimeout(showActivity, 3500);
+  setInterval(showActivity, 15000);
 
   const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));

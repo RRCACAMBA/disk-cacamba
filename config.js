@@ -5,9 +5,10 @@ window.DISK_CONFIG = {
   checkoutUrl: "https://disk-cacamba-production.up.railway.app/",
   address: "R. Teodureto de Camargo, 28 - Vila Celeste, São Paulo - SP, 02543-130",
   serviceArea: "São Paulo e Grande SP",
+  expressDeliveryText: "Entrega expressa em até 2 horas, sujeita à região e disponibilidade.",
+  laborPrice: "R$ 80,00",
   whatsappMessage: "Olá! Vim pelo site da Disk Caçamba e gostaria de consultar disponibilidade.",
-  laborMessage: "Olá! Vim pelo site da Disk Caçamba e gostaria de orçamento para caçamba com mão de obra. Meu bairro/CEP é: ",
-  laborOnlyMessage: "Olá! Vim pelo site da Disk Caçamba e gostaria de consultar mão de obra. O serviço que preciso é: ",
+  laborMessage: "Olá! Vim pelo site da Disk Caçamba. Gostaria de alugar uma caçamba e adicionar mão de obra por R$ 80,00. Meu bairro/CEP é: ",
   gtmId: "",
   ga4Id: "",
   googleAdsConversionId: ""
