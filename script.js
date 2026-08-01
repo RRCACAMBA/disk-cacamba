@@ -25,6 +25,22 @@ const waUrl = message => `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponen
     if(size) url.searchParams.set('cacamba',size);
     return url.toString();
   };
+document.querySelectorAll('.labor-link').forEach(a => {
+  a.href = waUrl(cfg.laborMessage || 'Olá! Gostaria de orçamento para caçamba com mão de obra.');
+  a.target = '_blank'; a.rel = 'noopener';
+  a.addEventListener('click', () => {
+    reportWhatsAppConversion();
+    sendEvent('labor_quote_click', {service:'cacamba_mao_de_obra'});
+  });
+});
+document.querySelectorAll('.labor-only-link').forEach(a => {
+  a.href = waUrl(cfg.laborOnlyMessage || 'Olá! Gostaria de consultar mão de obra.');
+  a.target = '_blank'; a.rel = 'noopener';
+  a.addEventListener('click', () => {
+    reportWhatsAppConversion();
+    sendEvent('labor_quote_click', {service:'somente_mao_de_obra'});
+  });
+});
 document.querySelectorAll('.wa-link').forEach(a => {
   a.href = waUrl(); a.target='_blank'; a.rel='noopener';
   a.addEventListener('click',()=>{
@@ -71,6 +87,8 @@ document.querySelectorAll('.size-checkout').forEach(a=>{
     ['Como funciona o pagamento?','As formas disponíveis são apresentadas no checkout ou informadas pela equipe antes da confirmação.'],
     ['A retirada é automática?','A retirada segue o prazo combinado. Quando necessário, confirme com a equipe pelo WhatsApp.'],
     ['Atendem condomínios e empresas?','Sim, mediante consulta do endereço, acesso e necessidade do serviço.'],
+    ['Posso contratar mão de obra junto com a caçamba?','Sim. Informe o tipo de material, quantidade, acesso e bairro para receber um orçamento combinado.'],
+    ['O valor da mão de obra é fixo?','Não. O valor depende do serviço, volume, acesso, pavimento, distância e tempo estimado.'],
     ['As medidas são exatas?','São medidas aproximadas. O formato pode variar conforme o equipamento disponibilizado.']
   ];
   document.getElementById('faqList').innerHTML=faqs.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join('');
@@ -81,8 +99,8 @@ document.querySelectorAll('.size-checkout').forEach(a=>{
 
 document.getElementById('leadForm').addEventListener('submit',e=>{
   e.preventDefault(); const fd=new FormData(e.currentTarget);
-  const msg=`Olá! Vim pelo site da Disk Caçamba.\nNome: ${fd.get('name')}\nBairro/CEP: ${fd.get('location')}\nTamanho: ${fd.get('size')}\nGostaria de consultar disponibilidade.`;
-  sendEvent('lead_form_submit',{size:fd.get('size')});
+  const msg=`Olá! Vim pelo site da Disk Caçamba.\nNome: ${fd.get('name')}\nBairro/CEP: ${fd.get('location')}\nServiço: ${fd.get('service')}\nTamanho da caçamba: ${fd.get('size')}\nGostaria de consultar disponibilidade e valor.`;
+  sendEvent('lead_form_submit',{service:fd.get('service'),size:fd.get('size')});
   reportWhatsAppConversion();
   window.open(waUrl(msg),'_blank','noopener');
 });

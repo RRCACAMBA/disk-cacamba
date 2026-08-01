@@ -24,3 +24,11 @@ Conversão de WhatsApp:
 
 ## Alterações futuras
 Para trocar telefone, WhatsApp, checkout ou endereço, edite somente `config.js`.
+
+## Mão de obra
+Esta versão inclui:
+- somente caçamba;
+- caçamba com mão de obra;
+- somente mão de obra;
+- formulário com escolha do serviço;
+- eventos `labor_quote_click` para rastreamento.
