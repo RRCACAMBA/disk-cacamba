@@ -58,13 +58,19 @@ document.querySelectorAll('.wa-link').forEach(a => {
     {size:'16 m³',dims:['4,10 m comp.','2,90 m larg.','1,60 m alt.'],use:'Grandes volumes e demolições.',tag:'Sob consulta',consult:true}
   ];
   const grid = document.getElementById('dumpsterGrid');
-  grid.innerHTML = sizes.map(s => `<article class="dumpster-card ${s.featured?'featured':''}">${s.featured?'<span class="popular-tag">MAIS PEDIDA</span>':''}<div class="dumpster-visual"><img src="cacamba.webp?v=20" width="380" height="230" loading="lazy" alt="Caçamba amarela Disk Caçamba ${s.size}"></div><div class="dumpster-body"><div class="dumpster-title"><h3>${s.size}</h3><span>${s.tag}</span></div><div class="dimensions">${s.dims.map(d=>`<span>${d}</span>`).join('')}</div><p>${s.use}</p><div class="card-extras"><span>⚡ Entrega em até 2 horas*</span><span>👷 Mão de obra + R$ 80,00</span></div><a class="button button-book size-checkout" data-size="${s.size}" href="#"><span>${s.consult?'Consultar':'Reservar esta caçamba'}</span><small>${s.consult?'Via WhatsApp':'Ir para o checkout'}</small></a></div></article>`).join('');
+  grid.innerHTML = sizes.map(s => `<article class="dumpster-card ${s.featured?'featured':''}">${s.featured?'<span class="popular-tag">MAIS PEDIDA</span>':''}<div class="dumpster-visual"><img src="cacamba.webp?v=20" width="380" height="230" loading="lazy" alt="Caçamba amarela Disk Caçamba ${s.size}"></div><div class="dumpster-body"><div class="dumpster-title"><h3>${s.size}</h3><span>${s.tag}</span></div><div class="dimensions">${s.dims.map(d=>`<span>${d}</span>`).join('')}</div><p>${s.use}</p><div class="card-extras"><span>⚡ Entrega em até 2 horas</span><span>👷 Mão de obra + R$ 80,00</span></div><a class="button button-book size-checkout" data-size="${s.size}" href="#"><span>${s.consult?'Consultar':'Reservar pelo WhatsApp'}</span><small>${s.consult?'Via WhatsApp':'Solicitar pelo WhatsApp'}</small></a></div></article>`).join('');
 document.querySelectorAll('.size-checkout').forEach(a=>{
-  const size=a.dataset.size;
-  if(size==='16 m³'){a.href=waUrl(`Olá! Gostaria de consultar a caçamba de ${size}. Meu bairro/CEP é: `);a.target='_blank'}else{a.href=checkoutUrl(size)}
+  const size = a.dataset.size;
+  a.href = waUrl(`Olá! Vim pelo site da Disk Caçamba e gostaria de reservar uma caçamba de ${size}. Também quero saber sobre entrega em até 2 horas e a opção de mão de obra por R$ 80,00. Meu bairro/CEP é: `);
+  a.target = '_blank';
+  a.rel = 'noopener';
+  const main = a.querySelector('span');
+  const small = a.querySelector('small');
+  if (main) main.textContent = 'Reservar pelo WhatsApp';
+  if (small) small.textContent = `Solicitar caçamba de ${size}`;
   a.addEventListener('click',()=>{
-    if(size==='16 m³') reportWhatsAppConversion();
-    sendEvent(size==='16 m³'?'whatsapp_size_click':'checkout_size_click',{size});
+    reportWhatsAppConversion();
+    sendEvent('whatsapp_size_click',{size});
   });
 });
 

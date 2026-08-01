@@ -1,26 +1,9 @@
-# Disk Caçamba V4 Express
+# Disk Caçamba V4 Corrigido
 
-Projeto completo para GitHub + Railway.
+Correções desta versão:
+- Todos os botões das caçambas abrem o WhatsApp.
+- O tamanho escolhido é incluído automaticamente na mensagem.
+- Removidos os símbolos de asterisco das mensagens de entrega em até 2 horas.
+- Conversão do Google Ads mantida nos cliques do WhatsApp.
 
-## Destaques desta versão
-- Entrega expressa em até 2 horas, com aviso de região e disponibilidade.
-- Mão de obra somente junto com a caçamba, pelo adicional de R$ 80,00.
-- Mapa ilustrativo das áreas de atendimento.
-- Notificações de benefícios e disponibilidade, sem inventar nomes ou pedidos reais.
-- Rastreamento de conversão do WhatsApp.
-- Layout responsivo para celular e computador.
-
-## Configuração rápida
-Edite `config.js` para alterar:
-- WhatsApp;
-- telefone;
-- checkout;
-- endereço;
-- mensagens.
-
-## Google Ads
-Tag: `AW-18362672744`
-Conversão do WhatsApp: `AW-18362672744/BT1hcOmNqNocEOjMgLRE`
-
-## Publicação
-Substitua todos os arquivos do repositório pelos arquivos deste projeto e aguarde o deploy no Railway.
+Para publicar, substitua todos os arquivos atuais pelos arquivos deste projeto.
