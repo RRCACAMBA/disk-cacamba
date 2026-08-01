@@ -1,19 +1,26 @@
-# Disk Caçamba Premium v20
+# Disk Caçamba — projeto novo
 
-Landing page para Google Ads, responsiva para celular e computador.
+Site responsivo para celular e computador, preparado para GitHub + Railway.
 
-## Configuração
-Edite apenas `config.js` para alterar WhatsApp, telefone, checkout, endereço e mensagens.
+## Arquivos principais
+- `config.js`: WhatsApp, telefone, checkout, endereço e textos.
+- `index.html`: estrutura da página e tag do Google Ads.
+- `styles.css`: visual completo e responsivo.
+- `script.js`: botões, formulário, cards, eventos e conversão.
+- `server.js`: servidor Express para Railway.
+
+## Google Ads
+Tag instalada: `AW-18362672744`
+
+Conversão de WhatsApp:
+`AW-18362672744/BT1hcOmNqNocEOjMgLRE`
 
 ## Publicação
-Envie somente os arquivos desta pasta ao repositório. O `server.js` desativa cache para HTML/CSS/JS, evitando que versões antigas permaneçam no celular.
+1. Extraia o ZIP.
+2. Envie todos os arquivos para a raiz do repositório no GitHub.
+3. No Railway, mantenha o comando `npm start`.
+4. Aguarde o deploy.
+5. Teste `https://www.reteccacamba.com.br`.
 
-## Rastreamento
-Tag do Google Ads instalada: `AW-18362672744`.
-
-Os cliques geram eventos no `dataLayer`:
-- `whatsapp_click`
-- `checkout_click`
-- `checkout_size_click`
-- `whatsapp_size_click`
-- `lead_form_submit`
+## Alterações futuras
+Para trocar telefone, WhatsApp, checkout ou endereço, edite somente `config.js`.
