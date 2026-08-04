@@ -1,7 +1,7 @@
 window.DISK_CONFIG = {
   companyName: "Disk Caçamba",
-  whatsapp: "5511926336542",
-  phoneDisplay: "(11) 92633-6542",
+  whatsapp: "5511926311240",
+  phoneDisplay: "(11) 92631-1240",
   checkoutUrl: "https://disk-cacamba-production.up.railway.app/",
   address: "R. Teodureto de Camargo, 28 - Vila Celeste, São Paulo - SP, 02543-130",
   serviceArea: "São Paulo e Grande SP",
